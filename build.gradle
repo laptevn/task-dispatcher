@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'co.laptev'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-log4j2', version: '1.1.0'
+    compile group: 'javax.mail', name: 'mail', version: '1.4.7'
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.0'
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-events', version: '2.2.6'
+    compile group: 'org.javadelight', name: 'delight-fileupload', version: '0.0.5'
+    compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+}
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtimeClasspath
+    }
+}
+
+build.dependsOn buildZip

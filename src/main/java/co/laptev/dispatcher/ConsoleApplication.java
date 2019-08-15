@@ -1,0 +1,10 @@
+package co.laptev.dispatcher;
+
+import java.util.Collections;
+
+public class ConsoleApplication {
+    public static void main(String[] args) {
+        TaskDispatcher taskDispatcher = new TaskDispatcher();
+        taskDispatcher.handleRequest(Collections.singletonMap("body", "LS0tLS0tV2ViS2l0Rm9ybUJvdW5kYXJ5a1E1VXdPc2xXRmRwUVVBTgpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9Im5hbWUiCgpOaWNrb2xheSBMYXB0ZXYKLS0tLS0tV2ViS2l0Rm9ybUJvdW5kYXJ5a1E1VXdPc2xXRmRwUVVBTgpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9ImVtYWlsIgoKbmlja29sYXkubGFwdGV2QGdtYWlsLmNvbQotLS0tLS1XZWJLaXRGb3JtQm91bmRhcnlrUTVVd09zbFdGZHBRVUFOCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iZGV0YWlscyIKCiwsLAotLS0tLS1XZWJLaXRGb3JtQm91bmRhcnlrUTVVd09zbFdGZHBRVUFOCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iYXR0YWNoZWQtZGV0YWlscyI7IGZpbGVuYW1lPSJwaG90by5qcGciCkNvbnRlbnQtVHlwZTogaW1hZ2UvanBlZwoK77+977+977+977+9EEpGSUYBAQEBLAEs77+977+977+9AgEK4oCmCkTvv73vv71T77+977+9Ci0tLS0tLVdlYktpdEZvcm1Cb3VuZGFyeWtRNVV3T3NsV0ZkcFFVQU4tLQ=="), null);
+    }
+}
