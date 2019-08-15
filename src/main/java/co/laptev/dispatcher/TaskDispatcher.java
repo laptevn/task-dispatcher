@@ -56,7 +56,6 @@ public class TaskDispatcher implements RequestHandler<Map<String, Object>, Map<S
                 .orElse(STATUS_BAD_REQUEST);
 
         logger.info("Handle request. Status code = {}", statusCode);
-
         return Collections.singletonMap("statusCode", statusCode);
     }
 }
