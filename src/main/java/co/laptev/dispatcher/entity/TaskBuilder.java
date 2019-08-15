@@ -33,6 +33,6 @@ public class TaskBuilder {
             return Optional.empty();
         }
 
-        return Optional.of(new Task(name, email, details, attachment));
+        return Optional.of(new Task(name, email, details, Optional.ofNullable(attachment)));
     }
 }

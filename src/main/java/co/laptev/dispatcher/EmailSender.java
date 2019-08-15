@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 import java.util.Properties;
 
 class EmailSender {
@@ -40,7 +41,7 @@ class EmailSender {
         this.password = password;
     }
 
-    public boolean send(String destinationEmail, String subject, String messageText, Attachment attachment) {
+    public boolean send(String destinationEmail, String subject, String messageText, Optional<Attachment> attachment) {
         try {
             Message message = new MimeMessage(createSession());
             message.setFrom(new InternetAddress(fromEmail));
@@ -53,8 +54,8 @@ class EmailSender {
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(mimeBodyPart);
 
-            if (attachment != null) {
-                multipart.addBodyPart(createAttachmentPart(attachment));
+            if (attachment.isPresent()) {
+                multipart.addBodyPart(createAttachmentPart(attachment.get()));
             }
 
             message.setContent(multipart);
@@ -62,6 +63,14 @@ class EmailSender {
         } catch (MessagingException e) {
             logger.error("Could not send email", e);
             return false;
+        } finally {
+            if (attachment.isPresent()) {
+                try {
+                    attachment.get().getContent().close();
+                } catch (IOException e) {
+                    logger.error("Could not close a stream for a submitted file", e);
+                }
+            }
         }
 
         return true;

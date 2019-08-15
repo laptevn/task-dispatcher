@@ -1,12 +1,14 @@
 package co.laptev.dispatcher.entity;
 
+import java.util.Optional;
+
 public class Task {
     private final String name;
     private final String email;
     private final String details;
-    private final Attachment attachment;
+    private final Optional<Attachment> attachment;
 
-    public Task(String name, String email, String details, Attachment attachment) {
+    public Task(String name, String email, String details, Optional<Attachment> attachment) {
         this.name = name;
         this.email = email;
         this.details = details;
@@ -25,7 +27,7 @@ public class Task {
         return details;
     }
 
-    public Attachment getAttachment() {
+    public Optional<Attachment> getAttachment() {
         return attachment;
     }
 }

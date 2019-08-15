@@ -6,7 +6,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
@@ -57,9 +57,6 @@ public class TaskDispatcher implements RequestHandler<Map<String, Object>, Map<S
 
         logger.info("Handle request. Status code = {}", statusCode);
 
-        Map<String, Object> response = new HashMap<>();
-        response.put("statusCode", statusCode);
-        response.put("body", "");
-        return response;
+        return Collections.singletonMap("statusCode", statusCode);
     }
 }
